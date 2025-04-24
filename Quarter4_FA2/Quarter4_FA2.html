@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Nested Loop Multiplication Table</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        input, button {
+            font-size: 16px;
+            padding: 5px;
+            margin: 5px;
+        }
+
+        table {
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        td {
+            border: 1px solid black;
+            padding: 10px;
+            text-align: center;
+            min-width: 30px;
+        }
+    </style>
+</head>
+<body>
+    <p>[enter a number between 2 and 10]</p>
+    <input type="text" id="rows" placeholder="Rows (2-10)">
+    by 
+    <input type="text" id="cols" placeholder="Columns (2-10)">
+    <br><br>
+    <button onclick="generateTable()">Click here when ready!</button>
+    <br><br>
+    <div id="output"></div>
+
+    <script>
+        function generateTable() {
+            const rows = parseInt(document.getElementById("rows").value);
+            const cols = parseInt(document.getElementById("cols").value);
+            const output = document.getElementById("output");
+            output.innerHTML = "";
+
+            if (isNaN(rows) || isNaN(cols) || rows < 2 || rows > 10 || cols < 2 || cols > 10) {
+                alert("Please enter numbers between 2 and 10");
+                return;
+            }
+
+            let html = "<table>";
+            for (let i = 1; i <= rows; i++) {
+                html += "<tr>";
+                for (let j = 1; j <= cols; j++) {
+                    html += `<td>${i * j}</td>`;
+                }
+                html += "</tr>";
+            }
+            html += "</table>";
+            output.innerHTML = html;
+        }
+    </script>
+</body>
+</html>
+
+
